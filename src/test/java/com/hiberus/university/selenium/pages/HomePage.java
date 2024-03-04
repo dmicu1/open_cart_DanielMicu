@@ -25,14 +25,30 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver ,this);
     }
     //Acciones
-    public void seleccionarOpcionRegistro(){
+    public void abrirMenuDesplegable(){
         dropDownAccount.click();
-        wait.until(ExpectedConditions.visibilityOf(registroOption)).isDisplayed();
-        registroOption.click();
+
     }
     public void seleccionarOpcionLogin(){
         dropDownAccount.click();
         wait.until(ExpectedConditions.visibilityOf(loginOption)).isDisplayed();
         loginOption.click();
+    }
+    public void pulsarParaPaginaRegistro(){
+
+        registroOption.click();
+    }
+    public void pulsarParaLogin(){
+        loginOption.click();
+    }
+    public void seleccionarOpcionRegistro(){
+        dropDownAccount.click();
+        wait.until(ExpectedConditions.visibilityOf(loginOption)).isDisplayed();
+        registroOption.click();
+
+    }
+
+    public String getURL() {
+        return getDriver().getCurrentUrl();
     }
 }
