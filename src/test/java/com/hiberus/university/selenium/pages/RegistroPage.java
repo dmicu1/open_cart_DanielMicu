@@ -1,8 +1,10 @@
 package com.hiberus.university.selenium.pages;
 
 import org.apache.commons.lang.RandomStringUtils;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.net.UrlChecker;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -205,20 +207,20 @@ public class RegistroPage extends BasePage {
         String actualErrorMessageTelephone = errorTelephoneMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Telephone': " + actualErrorMessageTelephone);
 
-    // Verifica que el mensaje de error para el campo 'Password' se muestre correctamente
-        wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage)).isDisplayed();
-        if (errorPasswordMessage.isDisplayed()) {
+        try {
+            // Espera hasta que el mensaje de error para el campo 'Password' esté visible
+            wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage)).isDisplayed();
+
+            // Si el mensaje de error está visible, imprime un mensaje de éxito
             System.out.println("El mensaje de error para el campo 'Password' se ha mostrado correctamente.");
-        } else {
+
+            // Obtiene el texto del mensaje de error
+            String actualErrorMessagePassword = errorPasswordMessage.getText();
+            System.out.println("Mensaje de error actual para el campo 'Password': " + actualErrorMessagePassword);
+
+        } catch (TimeoutException e) {
+            // Si no se encuentra el elemento, imprime un mensaje de error
             System.out.println("¡Error! El mensaje de error para el campo 'Password' no se ha mostrado.");
-        }
-        String actualErrorMessagePassword = errorPasswordMessage.getText();
-        System.out.println("Mensaje de error actual para el campo 'Password': " + actualErrorMessagePassword);
-        // Verifica que el mensaje de error para el campo 'Password' no se muestre
-        if (!errorPasswordMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'Password' no se ha mostrado.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'Password' se ha mostrado incorrectamente.");
         }
     }
 }

@@ -67,6 +67,9 @@ public class registroStep {
             PagesFactory pagesFactory = PagesFactory.getInstance();
             RegistroPage registroPage = pagesFactory.getRegistroPage();
             registroPage.erroresLimtesCamposInferiores();
+            String actualURL = registroPage.getURL();
+            System.out.println("El registro NO se ha realizado. La URL actual es: " + actualURL);
+
     }
      @When(": Relleno todos los campos obligatorios con valores limites superiores")
         public void relleno_todos_los_campos_obligatorios_con_valores_limites_superiores() {
@@ -79,6 +82,7 @@ public class registroStep {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         RegistroPage registroPage = pagesFactory.getRegistroPage();
         registroPage.erroresLimtesCamposSuperiores();
+        String actualURL = registroPage.getURL();
+        System.out.println("El registro NO se ha realizado. La URL actual es: " + actualURL);
     }
-
 }
