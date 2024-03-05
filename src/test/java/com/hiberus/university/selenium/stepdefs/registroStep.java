@@ -14,31 +14,31 @@ public class registroStep {
 
     @Given(": Me encuentro en la pagina Home")
     public void meEncuentroEnLaPaginaHome() {
-        PagesFactory pagesFactory= PagesFactory.getInstance();
-        HomePage homePage= pagesFactory.getHomePage();
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        HomePage homePage = pagesFactory.getHomePage();
         homePage.navigateTo(HomePage.PAGE_URL);
 
     }
 
     @And(": Seleciono desde el menu de account la opcion de registro")
     public void selecionoDesdeElMenuDeAccountLaOpcionDeRegistro() {
-        PagesFactory pagesFactory= PagesFactory.getInstance();
-        HomePage homePage= pagesFactory.getHomePage();
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        HomePage homePage = pagesFactory.getHomePage();
         homePage.seleccionarOpcionRegistro();
 
     }
 
     @When(": Relleno todos los campos obligatorios")
     public void rellenoTodosLosCamposObligatorios() {
-        PagesFactory pagesFactory=PagesFactory.getInstance();
-        RegistroPage registroPage= pagesFactory.getRegistroPage();
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        RegistroPage registroPage = pagesFactory.getRegistroPage();
         registroPage.rellenoLosCamposDataValida();
     }
 
     @And(": Hago click en el boton Continue")
     public void hagoClickEnElBotonContinue() {
-        PagesFactory pagesFactory=PagesFactory.getInstance();
-        RegistroPage registroPage= pagesFactory.getRegistroPage();
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        RegistroPage registroPage = pagesFactory.getRegistroPage();
         registroPage.pulsarContinuar();
     }
 
@@ -55,34 +55,53 @@ public class registroStep {
             System.out.println("El registro no se ha realizado con éxito. La URL actual es: " + actualURL);
         }
     }
-    @When(": Relleno todos los campos obligatorios con valores limites inferiores")
-    public void relleno_todos_los_campos_obligatorios_con_valores_limites_inferiores() {
-            PagesFactory pagesFactory = PagesFactory.getInstance();
-            RegistroPage registroPage = pagesFactory.getRegistroPage();
-            registroPage.camposLimitesInferiores();
 
+    @When(": Relleno los campos FirstName,LastName,Telephone,Password")
+    public void rellenoLosCamposFirstNameLastNameTelephonePassword() {
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        RegistroPage registroPage = pagesFactory.getRegistroPage();
+        registroPage.camposLimitesInferiores();
     }
-        @Then(": El registro No se puede realizar")
-        public void el_registro_no_se_puede_realizar () {
-            PagesFactory pagesFactory = PagesFactory.getInstance();
-            RegistroPage registroPage = pagesFactory.getRegistroPage();
-            registroPage.erroresLimtesCamposInferiores();
-            String actualURL = registroPage.getURL();
-            System.out.println("El registro NO se ha realizado. La URL actual es: " + actualURL);
 
+    @Then(": Los mensajes se disparan correctamente")
+    public void losMensajesSeDisparanCorrectamente() {
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        RegistroPage registroPage = pagesFactory.getRegistroPage();
+        registroPage.erroresLimtesCamposInferiores();
     }
-     @When(": Relleno todos los campos obligatorios con valores limites superiores")
-        public void relleno_todos_los_campos_obligatorios_con_valores_limites_superiores() {
+
+    @When(": Relleno los siguentes camposFirstName,LastName,Telephone,Password")
+    public void rellenoLosSiguentesCamposFirstNameLastNameTelephonePassword() {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         RegistroPage registroPage = pagesFactory.getRegistroPage();
         registroPage.camposLimitesSuperiores();
     }
-    @Then(": El registro no se puede realizar exitosamente")
-    public void el_registro_no_se_puede_realizar_exitosamente() {
+
+
+    @Then(": Los mensajes de error se disparan correctamenete")
+    public void losMensajesDeErrorSeDisparanCorrectamenete() {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         RegistroPage registroPage = pagesFactory.getRegistroPage();
         registroPage.erroresLimtesCamposSuperiores();
-        String actualURL = registroPage.getURL();
-        System.out.println("El registro NO se ha realizado. La URL actual es: " + actualURL);
+
+//        Descripción del Bug:
+//
+//        Ubicación: Campo de Contraseña
+//
+//        Descripción: Se esperaba que se activara el mensaje de error cuando se ingresaban más de 32 caracteres
+//        en el campo de contraseña. Sin embargo, el mensaje de error no se activó como se esperaba.
+//                Impacto Potencial: Este problema podría resultar en una experiencia de usuario confusa,
+//        ya que no se proporciona retroalimentación cuando se excede el límite de caracteres
+//        establecido para el campo de contraseña. Esto podría llevar a que los usuarios intenten ingresar contraseñas
+//        largas sin darse cuenta de que están excediendo el límite permitido.
+//                Pasos para Reproducir:
+//
+//        Ingresar más de 32 caracteres en el campo de contraseña.
+//        Observar la falta de aparición del mensaje de error correspondiente.
+//        Resultado Esperado: Se espera que aparezca un mensaje de error indicando que se han
+//        excedido los límites de caracteres para el campo de contraseña.
+//
+//        Resultado Actual: El mensaje de error no se muestra cuando se ingresan más de
+//        32 caracteres en el campo de contraseña.
     }
 }

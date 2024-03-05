@@ -12,15 +12,15 @@ Feature: Registro de usuario nuevo
     And  : Hago click en el boton Continue
     Then : El registro se realiza correctamente
 
-  @TC2ValidarRegistroInvalidoLimitesInferiores
-  Scenario: Validar NO poder registrarse rellenando con valores limites inferiores
-    When : Relleno todos los campos obligatorios con valores limites inferiores
+  @TC2ValidarLosMensajesDeErrorParaValoresLimitesInferiores
+  Scenario: Validar los mensajes de error ingresando data por debajo de los limites inferiores
+    When : Relleno los campos FirstName,LastName,Telephone,Password
     And  : Hago click en el boton Continue
-    Then : El registro No se puede realizar
+    Then : Los mensajes se disparan correctamente
 
 
-  @TC3ValidarRegistroInvalidoLimitesSuperiores-BUG(campopassword)
-  Scenario: Validar No registrarse rellenando con valores limites superiores
-    When : Relleno todos los campos obligatorios con valores limites superiores
+  @TC3ValidarLosMensajesDeErrorParaValoresLimitesSuperiores-BUG(campopassword)
+  Scenario: Validar los mensajes de error ingresando data por encima de los limites superiores
+    When : Relleno los siguentes camposFirstName,LastName,Telephone,Password
     And  : Hago click en el boton Continue
-    Then : El registro no se puede realizar exitosamente
+    Then : Los mensajes de error se disparan correctamenete

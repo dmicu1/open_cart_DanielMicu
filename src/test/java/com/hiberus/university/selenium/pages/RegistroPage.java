@@ -207,17 +207,23 @@ public class RegistroPage extends BasePage {
         String actualErrorMessageTelephone = errorTelephoneMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Telephone': " + actualErrorMessageTelephone);
 
+        // Verifica que el mensaje de error para el campo 'Password' se muestre correctamente
+        wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage)).isDisplayed();
+        // Verifica que el mensaje de error para el campo 'Telephone' se muestre correctamente
+        if (errorPasswordMessage.isDisplayed()) {
+            System.out.println("El mensaje de error para el campo 'Password' se ha mostrado correctamente.");
+        } else {
+            System.out.println("¡Error! El mensaje de error para el campo 'Password' no se ha mostrado.");
+        }
+        String actualErrorMessagePassword = errorPasswordMessage.getText();
+        System.out.println("Mensaje de error actual para el campo 'Password': " + actualErrorMessagePassword);
+
         try {
             // Espera hasta que el mensaje de error para el campo 'Password' esté visible
             wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage)).isDisplayed();
-
-            // Si el mensaje de error está visible, imprime un mensaje de éxito
             System.out.println("El mensaje de error para el campo 'Password' se ha mostrado correctamente.");
-
             // Obtiene el texto del mensaje de error
-            String actualErrorMessagePassword = errorPasswordMessage.getText();
             System.out.println("Mensaje de error actual para el campo 'Password': " + actualErrorMessagePassword);
-
         } catch (TimeoutException e) {
             // Si no se encuentra el elemento, imprime un mensaje de error
             System.out.println("¡Error! El mensaje de error para el campo 'Password' no se ha mostrado.");
