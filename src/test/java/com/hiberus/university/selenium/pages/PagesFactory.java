@@ -10,6 +10,7 @@ public class PagesFactory {
     private final HomePage homePage;
     private final RegistroPage registroPage;
     private final LoginPage loginPage;
+    private final CompraPage compraPage;
 
 
     private PagesFactory(WebDriver driver) {
@@ -17,6 +18,7 @@ public class PagesFactory {
         homePage = new HomePage(driver);
         registroPage = new RegistroPage(driver);
         loginPage = new LoginPage(driver);
+        compraPage= new CompraPage(driver);
     }
 
     public static void start (WebDriver driver) {pagesFactories = new PagesFactory(driver);}
@@ -30,5 +32,6 @@ public class PagesFactory {
     public HomePage getHomePage() {return homePage;}
     public RegistroPage getRegistroPage() { return registroPage; }
     public LoginPage getLoginPage() {return loginPage; }
+    public CompraPage getCompraPage()  {return compraPage;}
 
 }
