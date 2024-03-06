@@ -1,4 +1,4 @@
-@compra
+@cesta
 Feature: Compra usuario logeado
 
   Background:
@@ -7,14 +7,14 @@ Feature: Compra usuario logeado
     And   : Ingreso mis credenciales "<email>" y "<password>"
 
 
-  @smokeTC1ValidarCompraProductos
-  Scenario: Comprar 2 productos al azar desde la seccion "Mp3Players"
+  @smokeTC1ValidarAgregarProductosCesta
+  Scenario: Agregar 2 productos al azar desde la seccion "Mp3Players"
 
     When : Accedo a la seccion Mp3 Players
     And  : Selecciono al azar 2 productos
     Then : Los productos se agregaron correctamente a la cesta
 
 
-  Scenario: Comprar productos al azar y luego eliminarlos
+  Scenario: Agregar productos al azar y luego eliminarlos
     When  : Elimino los productos agregados previamente
     Then  : Los productos se eliminan correctamente

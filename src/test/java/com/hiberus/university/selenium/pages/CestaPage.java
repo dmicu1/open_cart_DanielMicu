@@ -10,8 +10,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.*;
 
-public class CompraPage extends BasePage {
-    public CompraPage(WebDriver driver) {
+public class CestaPage extends BasePage {
+    public CestaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -23,7 +23,7 @@ public class CompraPage extends BasePage {
     @FindBy(xpath = "//div[@class='button-group']//child::i[@class='fa fa-shopping-cart']")
     WebElement listaProductos;
     @FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
-    WebElement mensajeExitosoCompra;
+    WebElement mensajeExitosoCesta;
     @FindBy(xpath = "//a[text()='MP3 Players']")
     private WebElement menuMp3;
     @FindBy(xpath = "//span[@id='cart-total']")
@@ -65,11 +65,11 @@ public class CompraPage extends BasePage {
         productos.get(indice2).click();
     }
 
-    public void validarCompra() throws InterruptedException {
+    public void validarCesta() throws InterruptedException {
         //Validar que aparece el mensaje de error
-        wait.until(ExpectedConditions.elementToBeClickable(mensajeExitosoCompra));
-//        Thread.sleep(1000);
-        if (mensajeExitosoCompra.isDisplayed()) {
+        //wait.until(ExpectedConditions.elementToBeClickable(mensajeExitosoCompra));
+        Thread.sleep(1000);
+        if (mensajeExitosoCesta.isDisplayed()) {
             System.out.println("El mensaje que aparece al agregar un producto es: Success: You have added .");
         } else {
             System.out.println("¡Error! El mensaje NO esta presente");
@@ -78,9 +78,9 @@ public class CompraPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(cartTotalElement));
         String cartTotalText = cartTotalElement.getText();
         System.out.println("Texto dentro del elemento cart-total: " + cartTotalText);
-     }
+    }
 
-    public void eliminarLosProductos()  {
+    public void eliminarLosProductos() {
         // Eliminar el primer producto
         irAlCarito.click();
         eliminarProductos.click();
@@ -93,7 +93,8 @@ public class CompraPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(eliminar2Productos));
         eliminar2Productos.click();
     }
-    public void validarCestaVacia(){
+
+    public void validarCestaVacia() {
         wait.until(ExpectedConditions.visibilityOf(cartTotalElementCesta));
         String cartTotalCesta = cartTotalElementCesta.getText();
         System.out.println("Texto dentro del elemento cart-total: " + cartTotalCesta);

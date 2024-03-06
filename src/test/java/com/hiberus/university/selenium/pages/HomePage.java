@@ -45,7 +45,6 @@ public class HomePage extends BasePage {
         dropDownAccount.click();
         wait.until(ExpectedConditions.visibilityOf(loginOption)).isDisplayed();
         registroOption.click();
-
     }
 
     public String getURL() {
