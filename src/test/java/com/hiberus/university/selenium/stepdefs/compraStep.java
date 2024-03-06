@@ -36,4 +36,19 @@ public class compraStep {
         CompraPage compraPage= pagesFactory.getCompraPage();
         compraPage.validarCompra();
     }
+
+    @And(": Elimino todos los productos de la cesta")
+    public void eliminoTodosLosProductosDeLaCesta() {
+        PagesFactory pagesFactory= PagesFactory.getInstance();
+        CompraPage compraPage= pagesFactory.getCompraPage();
+        compraPage.eliminarLosProductos();
+    }
+
+    @Then(": Los productos se eliminan correctamente")
+    public void losProductosSeEliminanCorrectamente() {
+        PagesFactory pagesFactory= PagesFactory.getInstance();
+        CompraPage compraPage= pagesFactory.getCompraPage();
+        compraPage.validarCestaVacia();
+
+    }
 }
