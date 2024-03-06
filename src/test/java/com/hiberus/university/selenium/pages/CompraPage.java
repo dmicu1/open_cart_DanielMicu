@@ -65,16 +65,17 @@ public class CompraPage extends BasePage {
         productos.get(indice2).click();
     }
 
-    public void validarCompra() {
+    public void validarCompra() throws InterruptedException {
         //Validar que aparece el mensaje de error
-        wait.until(ExpectedConditions.visibilityOf(mensajeExitosoCompra)).isDisplayed();
+        wait.until(ExpectedConditions.elementToBeClickable(mensajeExitosoCompra));
+//        Thread.sleep(1000);
         if (mensajeExitosoCompra.isDisplayed()) {
             System.out.println("El mensaje que aparece al agregar un producto es: Success: You have added .");
         } else {
             System.out.println("¡Error! El mensaje NO esta presente");
         }
         //Obtener numero de productos de la cesta
-        wait.until(ExpectedConditions.visibilityOf(cartTotalElement)).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(cartTotalElement));
         String cartTotalText = cartTotalElement.getText();
         System.out.println("Texto dentro del elemento cart-total: " + cartTotalText);
      }
@@ -85,15 +86,15 @@ public class CompraPage extends BasePage {
         eliminarProductos.click();
 
         // Hacer clic en la cesta nuevamente
-        wait.until(ExpectedConditions.visibilityOf(irAlCarritoInterfaz)).isDisplayed();
+        wait.until(ExpectedConditions.elementToBeClickable(irAlCarritoInterfaz));
         irAlCarritoInterfaz.click();
 
         // Eliminar el segundo producto
-        wait.until(ExpectedConditions.visibilityOf(eliminar2Productos)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(eliminar2Productos));
         eliminar2Productos.click();
     }
     public void validarCestaVacia(){
-        wait.until(ExpectedConditions.visibilityOf(cartTotalElementCesta)).isDisplayed();
+        wait.until(ExpectedConditions.visibilityOf(cartTotalElementCesta));
         String cartTotalCesta = cartTotalElementCesta.getText();
         System.out.println("Texto dentro del elemento cart-total: " + cartTotalCesta);
     }

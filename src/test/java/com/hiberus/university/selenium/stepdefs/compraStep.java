@@ -19,36 +19,39 @@ public class compraStep {
 
     @When(": Accedo a la seccion Mp3 Players")
     public void accedoALaSeccionMp3Players() {
-        PagesFactory pagesFactory= PagesFactory.getInstance();
-        CompraPage compraPage= pagesFactory.getCompraPage();
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        CompraPage compraPage = pagesFactory.getCompraPage();
         compraPage.accederListaMp3();
     }
 
     @And(": Selecciono al azar {int} productos")
     public void seleccionoAlAzarProductos(int arg0) {
-        PagesFactory pagesFactory= PagesFactory.getInstance();
-        CompraPage compraPage= pagesFactory.getCompraPage();
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        CompraPage compraPage = pagesFactory.getCompraPage();
         compraPage.capturarDosProductosAlAzar(pagesFactory.getDriver());
     }
+
     @Then(": Los productos se agregaron correctamente a la cesta")
-    public void losProductosSeAgregaronCorrectamenteALaCesta() {
-        PagesFactory pagesFactory= PagesFactory.getInstance();
-        CompraPage compraPage= pagesFactory.getCompraPage();
+    public void losProductosSeAgregaronCorrectamenteALaCesta() throws InterruptedException {
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        CompraPage compraPage = pagesFactory.getCompraPage();
         compraPage.validarCompra();
     }
 
-    @And(": Elimino todos los productos de la cesta")
-    public void eliminoTodosLosProductosDeLaCesta() {
-        PagesFactory pagesFactory= PagesFactory.getInstance();
-        CompraPage compraPage= pagesFactory.getCompraPage();
+    @When(": Elimino los productos agregados previamente")
+    public void eliminoLosProductosAgregadosPreviamente() {
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        CompraPage compraPage = pagesFactory.getCompraPage();
         compraPage.eliminarLosProductos();
     }
 
     @Then(": Los productos se eliminan correctamente")
     public void losProductosSeEliminanCorrectamente() {
-        PagesFactory pagesFactory= PagesFactory.getInstance();
-        CompraPage compraPage= pagesFactory.getCompraPage();
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        CompraPage compraPage = pagesFactory.getCompraPage();
         compraPage.validarCestaVacia();
 
     }
+
+
 }
