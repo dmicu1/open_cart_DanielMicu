@@ -20,41 +20,58 @@ public class CompraPage extends BasePage {
         return getDriver().getCurrentUrl();
     }
 
-    @FindBy(xpath = "//span[text()='Add to Cart']")
-
-    private WebElement listaProductos;
+    @FindBy(xpath = "//div[@class='button-group']//child::i[@class='fa fa-shopping-cart']")
+    WebElement listaProductos;
+    @FindBy(xpath ="//div[@class='alert alert-success alert-dismissible']")
+    WebElement mensajeExitosoCompra;
     @FindBy(xpath = "//a[text()='MP3 Players']")
     private WebElement menuMp3;
+   @FindBy(xpath = "//span[@id='cart-total']")
+   WebElement cartTotalElement;
+
+    @FindBy(xpath = "//div[@id='cart']//child::button[class='btn btn-inverse btn-block btn-lg dropdown-toggle']")
+    private WebElement irAlCarito;
     @FindBy(xpath = "//a[text()='Show All MP3 Players']")
     private WebElement todosLosMP3;
+    @FindBy(xpath = "//button[@title='Remove']")
+    private WebElement eliminarProductos;
     public void accederListaMp3() {
         menuMp3.click();
         todosLosMP3.click();
     }
-    public void agregarESteProducto(){
-        listaProductos.click();
+
+    public void capturarDosProductosAlAzar(WebDriver driver) {
+
+            // Encontrar todos los elementos de la lista de productos
+            List<WebElement> productos = driver.findElements(By.xpath("//div[@class='button-group']//child::i[@class='fa fa-shopping-cart']"));
+            // Generar dos índices únicos al azar
+            Random random = new Random();
+            int indice1 = random.nextInt(productos.size());
+            int indice2;
+            do {
+                indice2 = random.nextInt(productos.size());
+            } while (indice2 == indice1);
+
+            // Hacer clic en los dos productos correspondientes a los índices seleccionados
+            productos.get(indice1).click();
+            productos.get(indice2).click();
+        }
+        public void validarCompra(){
+            //Validar que aparece el mensaje de error
+            wait.until(ExpectedConditions.visibilityOf(mensajeExitosoCompra)).isDisplayed();
+            if (mensajeExitosoCompra.isDisplayed()) {
+                System.out.println("El mensaje que aparece al agregar un producto es: Success: You have added .");
+            } else {
+                System.out.println("¡Error! El mensaje NO esta presente");
+            }
+            //Obtener numero de productos de la cesta
+            String cartTotalText = cartTotalElement.getText();
+            System.out.println("Texto dentro del elemento cart-total: " + cartTotalText);
+
+//            //Eliminar los productos previamente agregados
+//            irAlCarito.click();
+//            eliminarProductos.click();
+//            eliminarProductos.click();
+            }
+
     }
-//    public List<WebElement> capturarTresProductosAlAzar(WebDriver driver) {
-//        wait.until(ExpectedConditions.visibilityOf(listaProductos)).isDisplayed();
-//        // Esperar a que se carguen los productos
-//
-//        // Encontrar todos los elementos de la lista de productos
-//        List<WebElement> elementosLista = driver.findElements(By.xpath("//button[contains(@onclick, 'cart.add')]"));
-//
-//        // Verificar si hay menos de tres productos en la lista
-//        if (elementosLista.size() < 3) {
-//            throw new IllegalStateException("La lista de productos no tiene suficientes elementos.");
-//        }
-//
-//        // Capturar tres productos al azar de la lista
-//        List<WebElement> tresProductos = new ArrayList<>();
-//        Random random = new Random();
-//        for (int i = 0; i < 3; i++) {
-//            int indiceAleatorio = random.nextInt(elementosLista.size());
-//            tresProductos.add(elementosLista.get(indiceAleatorio));
-//            elementosLista.remove(indiceAleatorio); // Evitar duplicados
-//        }
-//
-//        return tresProductos;
-//    }
-}

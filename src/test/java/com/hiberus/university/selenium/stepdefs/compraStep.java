@@ -13,6 +13,7 @@ import org.junit.Assert;
 
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class compraStep {
 
@@ -27,11 +28,12 @@ public class compraStep {
     public void seleccionoAlAzarProductos(int arg0) {
         PagesFactory pagesFactory= PagesFactory.getInstance();
         CompraPage compraPage= pagesFactory.getCompraPage();
-        compraPage.agregarESteProducto();
+        compraPage.capturarDosProductosAlAzar(pagesFactory.getDriver());
     }
-
     @Then(": Los productos se agregaron correctamente a la cesta")
     public void losProductosSeAgregaronCorrectamenteALaCesta() {
-
+        PagesFactory pagesFactory= PagesFactory.getInstance();
+        CompraPage compraPage= pagesFactory.getCompraPage();
+        compraPage.validarCompra();
     }
 }

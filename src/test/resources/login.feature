@@ -1,10 +1,11 @@
+@login
 Feature: Login Usuario
 
   Background:
     Given : Me encuentro en la pagina Home
     And   : Seleciono desde el menu de account la opcion de login
 
-  @smokeTC1ValidarLoginCredencialesValidas
+  @smokeTC1HappyPathValidarLoginCredencialesValidas
   Scenario Outline: Login con credenciales validas
 
     When : Ingreso mis credenciales "<email>" y "<password>"
