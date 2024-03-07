@@ -114,43 +114,24 @@ public class RegistroPage extends BasePage {
         agreePrivacyPolicy.click();
     }
     public void erroresLimtesCamposInferiores() {
-        wait.until(ExpectedConditions.visibilityOf(errorFirstNameMessage)).isDisplayed();
-        if (errorFirstNameMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'First Name' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'First Name' no se ha mostrado.");
-        }
-        // Imprime el texto del mensaje de error en la consola
+
+        // Verifica que el mensaje de error para el campo 'First Name' se muestre correctamente
+        wait.until(ExpectedConditions.visibilityOf(errorFirstNameMessage));
         String actualErrorMessage = errorFirstNameMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'First Name': " + actualErrorMessage);
 
-        wait.until(ExpectedConditions.visibilityOf(errorLastNameMessage)).isDisplayed();
         // Verifica que el mensaje de error para el campo 'Last Name' se muestre correctamente
-        if (errorLastNameMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'Last Name' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'Last Name' no se ha mostrado.");
-        }
+        wait.until(ExpectedConditions.visibilityOf(errorLastNameMessage)).isDisplayed();
         String actualErrorMessageLastName = errorLastNameMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Last Name': " + actualErrorMessageLastName);
-        wait.until(ExpectedConditions.visibilityOf(errorLastNameMessage)).isDisplayed();
 
-// Verifica que el mensaje de error para el campo 'Password' se muestre correctamente
-        if (errorPasswordMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'Password' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'Password' no se ha mostrado.");
-        }
+       // Verifica que el mensaje de error para el campo 'Password' se muestre correctamente
+        wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage));
         String actualErrorMessagePassword = errorPasswordMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Password': " + actualErrorMessagePassword);
 
-        wait.until(ExpectedConditions.visibilityOf(errorTelephoneMessage)).isDisplayed();
-// Verifica que el mensaje de error para el campo 'Telephone' se muestre correctamente
-        if (errorTelephoneMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'Telephone' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'Telephone' no se ha mostrado.");
-        }
+        // Verifica que el mensaje de error para el campo 'Telephone' se muestre correctamente
+        wait.until(ExpectedConditions.visibilityOf(errorTelephoneMessage));
         String actualErrorMessageTelephone = errorTelephoneMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Telephone': " + actualErrorMessageTelephone);
     }
@@ -177,44 +158,23 @@ public class RegistroPage extends BasePage {
         agreePrivacyPolicy.click();
     }
     public void erroresLimtesCamposSuperiores() {
-        wait.until(ExpectedConditions.visibilityOf(errorFirstNameMessage)).isDisplayed();
-        if (errorFirstNameMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'First Name' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'First Name' no se ha mostrado.");
-        }
-        // Imprime el texto del mensaje de error en la consola
+        // Verifica que el mensaje de error para el campo 'First Name' se muestre correctamente
+        wait.until(ExpectedConditions.visibilityOf(errorFirstNameMessage));
         String actualErrorMessage = errorFirstNameMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'First Name': " + actualErrorMessage);
 
-        wait.until(ExpectedConditions.visibilityOf(errorLastNameMessage)).isDisplayed();
         // Verifica que el mensaje de error para el campo 'Last Name' se muestre correctamente
-        if (errorLastNameMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'Last Name' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'Last Name' no se ha mostrado.");
-        }
+        wait.until(ExpectedConditions.visibilityOf(errorLastNameMessage));
         String actualErrorMessageLastName = errorLastNameMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Last Name': " + actualErrorMessageLastName);
 
-        wait.until(ExpectedConditions.visibilityOf(errorTelephoneMessage)).isDisplayed();
         // Verifica que el mensaje de error para el campo 'Telephone' se muestre correctamente
-        if (errorTelephoneMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'Telephone' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'Telephone' no se ha mostrado.");
-        }
+        wait.until(ExpectedConditions.visibilityOf(errorTelephoneMessage));
         String actualErrorMessageTelephone = errorTelephoneMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Telephone': " + actualErrorMessageTelephone);
 
         // Verifica que el mensaje de error para el campo 'Password' se muestre correctamente
-        wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage)).isDisplayed();
-        // Verifica que el mensaje de error para el campo 'Telephone' se muestre correctamente
-        if (errorPasswordMessage.isDisplayed()) {
-            System.out.println("El mensaje de error para el campo 'Password' se ha mostrado correctamente.");
-        } else {
-            System.out.println("¡Error! El mensaje de error para el campo 'Password' no se ha mostrado.");
-        }
+        wait.until(ExpectedConditions.visibilityOf(errorPasswordMessage));
         String actualErrorMessagePassword = errorPasswordMessage.getText();
         System.out.println("Mensaje de error actual para el campo 'Password': " + actualErrorMessagePassword);
 
