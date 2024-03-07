@@ -10,25 +10,24 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 public class homeStep {
-    @Given("Me encuentro en la pagina Home")
-    public void me_encuentro_en_la_pagina_home() {
+    @Given(": Me encuentro en la pagina Home")
+    public void meEncuentroEnLaPaginaHome() {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         HomePage homePage = pagesFactory.getHomePage();
-        homePage.navigateTo(HomePage.PAGE_URL);
+        homePage.navigateTo(homePage.PAGE_URL);
     }
-
-    @When(": Abro el menu desplegable")
-    public void abroElMenuDesplegable() {
+    @When(": Seleciono desde el menu de account la opcion de registro")
+    public void selecionoDesdeElMenuDeAccountLaOpcionDeRegistro() {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         HomePage homePage = pagesFactory.getHomePage();
-        homePage.abrirMenuDesplegable();
+        homePage.seleccionarOpcionRegistro();
+
     }
 
     @Then(": Se me redirecciona corectamente hacia la pagina de registro usuario")
     public void seMeRedireccionaCorectamenteHaciaLaPaginaDeRegistroUsuario() {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         HomePage homePage = pagesFactory.getHomePage();
-        homePage.pulsarParaPaginaRegistro();
         String actualURL = homePage.getURL();
         String expectedURL = "https://opencart.abstracta.us/index.php?route=account/register";
         Assert.assertEquals("No se ha podido navegar hacia la pagina", expectedURL, actualURL);
@@ -39,12 +38,17 @@ public class homeStep {
         }
 
     }
+    @When(": Seleciono desde el menu de account la opcion de login")
+    public void seleciono_desde_el_menu_de_account_la_opcion_de_login() {
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        HomePage homePage = pagesFactory.getHomePage();
+        homePage.seleccionarOpcionLogin();
+    }
 
     @Then(": Se me redirecciona corectamente hacia la pagina de login")
     public void seMeRedireccionaCorectamenteHaciaLaPaginaDeLogin() {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         HomePage homePage = pagesFactory.getHomePage();
-        homePage.pulsarParaLogin();
         String actualURL = homePage.getURL();
         String expectedURL = "https://opencart.abstracta.us/index.php?route=account/login";
         Assert.assertEquals("No se ha podido navegar hacia la pagina de Login", expectedURL, actualURL);
@@ -54,5 +58,7 @@ public class homeStep {
             System.out.println("¡Error! No se ha navegado correctamente a la página de Login. URL actual: " + actualURL);
         }
     }
+
+
 }
 

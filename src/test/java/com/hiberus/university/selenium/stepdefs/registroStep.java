@@ -12,21 +12,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class registroStep {
 
-    @Given(": Me encuentro en la pagina Home")
-    public void meEncuentroEnLaPaginaHome() {
-        PagesFactory pagesFactory = PagesFactory.getInstance();
-        HomePage homePage = pagesFactory.getHomePage();
-        homePage.navigateTo(HomePage.PAGE_URL);
-
-    }
-
-    @And(": Seleciono desde el menu de account la opcion de registro")
-    public void selecionoDesdeElMenuDeAccountLaOpcionDeRegistro() {
-        PagesFactory pagesFactory = PagesFactory.getInstance();
-        HomePage homePage = pagesFactory.getHomePage();
-        homePage.seleccionarOpcionRegistro();
-
-    }
 
     @When(": Relleno todos los campos obligatorios")
     public void rellenoTodosLosCamposObligatorios() {

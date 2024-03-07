@@ -25,19 +25,13 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver ,this);
     }
     //Acciones
-    public void abrirMenuDesplegable(){
-        dropDownAccount.click();
 
-    }
     public void seleccionarOpcionLogin(){
         dropDownAccount.click();
         wait.until(ExpectedConditions.visibilityOf(loginOption)).isDisplayed();
         loginOption.click();
     }
-    public void pulsarParaPaginaRegistro(){
 
-        registroOption.click();
-    }
     public void pulsarParaLogin(){
         loginOption.click();
     }

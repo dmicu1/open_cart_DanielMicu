@@ -1,16 +1,17 @@
 @home
 Feature: Pagina principal del Software
 
-  @smokeValidarNavegarHaciaLaPaginaDeRegistro
+    Background:
+      Given : Me encuentro en la pagina Home
+
+  @smokeNavegarHaciaLaPaginaDeRegistro
   Scenario: Navegar hacia la Pagina de Registro
 
-    Given : Me encuentro en la pagina Home
-    When  : Abro el menu desplegable
+    When  : Seleciono desde el menu de account la opcion de registro
     Then  : Se me redirecciona corectamente hacia la pagina de registro usuario
 
-  @smokeValidarNavegarHaciaLaPaginaDeLogin
+  @smokeNavegarHaciaLaPaginaDeLogin
   Scenario: Navegar hacia la Pagina de Login
 
-    Given : Me encuentro en la pagina Home
-    And   : Abro el menu desplegable
+    When  : Seleciono desde el menu de account la opcion de login
     Then  : Se me redirecciona corectamente hacia la pagina de login

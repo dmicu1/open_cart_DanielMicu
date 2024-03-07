@@ -10,12 +10,7 @@ import org.junit.Assert;
 import org.openqa.selenium.support.PageFactory;
 
 public class loginStep {
-    @And(": Seleciono desde el menu de account la opcion de login")
-    public void seleciono_desde_el_menu_de_account_la_opcion_de_login() {
-        PagesFactory pagesFactory = PagesFactory.getInstance();
-        HomePage homePage = pagesFactory.getHomePage();
-        homePage.seleccionarOpcionLogin();
-    }
+
 
     @When(": Ingreso mis credenciales {string} y {string}")
     public void ingreso_mis_credenciales_y(String string, String string2) {
