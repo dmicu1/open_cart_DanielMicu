@@ -34,12 +34,6 @@ public class loginStep {
         }
     }
 
-    @When(": Ingreso mis credenciales {string} y {string} invalido")
-    public void ingresoMisCredencialesYInvalido(String arg0, String arg1) {
-        PagesFactory pagesFactory = PagesFactory.getInstance();
-        LoginPage loginPage = pagesFactory.getLoginPage();
-        loginPage.ingresarContraseñaInvalida();
-    }
 
     @Then(": El login NO se puede realizar")
     public void elLoginNOSePuedeRealizar() {
@@ -47,5 +41,12 @@ public class loginStep {
         LoginPage loginPage = pagesFactory.getLoginPage();
         String actualURL = loginPage.getURL();
         System.out.println("El login NO se ha realizado por ingresar una contraseña invalida. La URL actual es: " + actualURL);
+    }
+
+    @When(": Ingreso  {string} valido y {string} invalido")
+    public void ingresoValidoYInvalido(String arg0, String arg1) {
+        PagesFactory pagesFactory = PagesFactory.getInstance();
+        LoginPage loginPage = pagesFactory.getLoginPage();
+        loginPage.ingresarContraseñaInvalida();
     }
 }

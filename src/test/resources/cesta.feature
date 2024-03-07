@@ -1,5 +1,5 @@
 @cesta
-Feature: Agregar productos al carrito con usuario logeado
+Feature: Agregar productos al carrito como usuario logeado
 
   Background:
     Given : Me encuentro en la pagina Home

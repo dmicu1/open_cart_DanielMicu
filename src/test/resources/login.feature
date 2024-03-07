@@ -17,7 +17,7 @@ Feature: Login Usuario
   @ValidarNoPoderRealizarLoginIngresandoContraseñaInvalida
   Scenario Outline: Login ingresando data Contraseña invalida
 
-    When : Ingreso mis credenciales "<email>" y "<password>" invalido
+    When : Ingreso  "<email>" valido y "<password>" invalido
     Then : El login NO se puede realizar
     Examples:
       | email                  | password |
