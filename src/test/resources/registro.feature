@@ -20,6 +20,7 @@ Feature: Registro de usuario nuevo
     Then : Los mensajes se disparan correctamente
 
   @ValidarLosMensajesDeErrorParaValoresLimitesSuperiores-BUG(campopassword)
+
   Scenario: Validar los mensajes de error ingresando data por encima de los limites superiores
 
     When : Relleno los siguentes camposFirstName,LastName,Telephone,Password

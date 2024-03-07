@@ -68,6 +68,8 @@ public class registroStep {
         PagesFactory pagesFactory = PagesFactory.getInstance();
         RegistroPage registroPage = pagesFactory.getRegistroPage();
         registroPage.erroresLimtesCamposSuperiores();
+        //Link abajo para acceder a la incidencia abierta en Jira Manangement Issues
+        //https://micu1986.atlassian.net/jira/software/projects/B1/boards/1?selectedIssue=B1-74
 
 //        Descripción del Bug:
 //
